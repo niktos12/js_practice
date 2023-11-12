@@ -1,0 +1,12 @@
+.btn{
+    background-color: #3e036e;
+    color: #fff;
+}
+.time{
+    text-align: center;
+    font-size: 50px;
+    border: 1px solid #3e036e;
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+}
