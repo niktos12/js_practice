@@ -23,7 +23,9 @@ html,
       right: 140px !important; 
       left: auto;
     }
+    
     .swiper-button-prev, .swiper-rtl .swiper-button-next{
       left: 140px !important; 
       right: auto;
+
     }
