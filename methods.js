@@ -57,40 +57,42 @@ let arrayNumbersLessThan500 = [];
 //         }
 //     }
 // }
-function random(min,max){
-    return Math.floor(min + Math.random() * (max + 1 - min))
-}
+// function random(min,max){
+//     return Math.floor(min + Math.random() * (max + 1 - min))
+// }
 
-const field = [["","",""],["","",""],["","",""]];
-function fillField(){
-    let emptyCells = [];
-    for(let i = 0; i < field.length; i++){
-        for(let j = 0; j < field[i].length; j++){
-            if(field[i][j] === ''){
-                emptyCells.push({x: i, y: j});
-            }
-        }
-    }
-    if(emptyCells.length > 0){
-        // let randomIndex = Math.floor(Math.random() * emptyCells.length);
-        let randomIndex = random(1,emptyCells.length) - 1;
-        return emptyCells[randomIndex];
-    }
-    return null;
-}
-const intervalId = setInterval(function(){
-    let randomCell = fillField();
-    if(randomCell !== null){
-        // let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
-        let randomSymbol = random(0,1) == 0 ? 'X' : 'O';
-        field[randomCell.x][randomCell.y] = randomSymbol;
-        console.log(field);
-    }else{
-        clearInterval(intervalId);
-        console.log('no empty cells');
-    }
+// const field = [["","",""],["","",""],["","",""]];
+// function fillField(){
+//     let emptyCells = [];
+//     for(let i = 0; i < field.length; i++){
+//         for(let j = 0; j < field[i].length; j++){
+//             if(field[i][j] === ''){
+//                 emptyCells.push({x: i, y: j});
+//             }
+//         }
+//     }
+//     if(emptyCells.length > 0){
+//         // let randomIndex = Math.floor(Math.random() * emptyCells.length);
+//         let randomIndex = random(1,emptyCells.length) - 1;
+//         return emptyCells[randomIndex];
+//     }
+//     return null;
+// }
+// const intervalId = setInterval(function(){
+//     let randomCell = fillField();
+//     if(randomCell !== null){
+//         // let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
+//         let randomSymbol = random(0,1) == 0 ? 'X' : 'O';
+//         field[randomCell.x][randomCell.y] = randomSymbol;
+//         console.log(field);
+//     }else{
+//         clearInterval(intervalId);
+//         console.log('no empty cells');
+//     }
     
-},1000)
+// },1000)
+console.log(Math.pow(2,1000000000))
+console.log((1000000000*3) + 6)
 
 
 
@@ -126,4 +128,33 @@ const intervalId = setInterval(function(){
 //     setTimeout(()=>{fillRandomCell()},1000) 
 // } 
 // fillRandomCell();
+// const seqlist = function(first,c,l){
+//     let result = [];
+//     result[0] = first;
+//     for(let i = 1;i < l; i++){
+//         result[i] = (first + (c*i));
+//     }
+//     console.log(result)
+//   }
+// seqlist(0,1,20)
+// function fizzbuzz(n) {
+//     let result = [];
+//     for (let i = 1; i <= n; i++) {
+//         if (i % 3 === 0 && i % 5 === 0) {
+//             result.push('FizzBuzz');
+//         } else if (i % 3 === 0) {
+//             result.push('Fizz');
+//         } else if (i % 5 === 0) {
+//             result.push('Buzz');
+//         } else {
+//             result.push(i);
+//         }
+//     }
+//     return result;
+// }
+//   console.log(fizzbuzz(15))
+function descendingOrder(n){
+    return parseInt(String(n).split('').sort((a,b) => b - a).join(''));
+  }
+  console.log(descendingOrder(42145))
 
