@@ -47,56 +47,22 @@ function forPeople(people){
 let randomNumber;
 let arrayNumbersLessThan500 = [];
     
-function fullRandom(min, max, minNumberForEnd){
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    while (randomNumber < minNumberForEnd || randomNumber == undefined){ // пока случайное число меньше 500
-        randomNumber = Math.round(min + Math.random() * (max + 1 - min)) + min;
-        if(randomNumber < minNumberForEnd){
-            arrayNumbersLessThan500.push(randomNumber); // если рандомное число меньше 500, то добавляем его в массив
-        }
-    }
-    return arrayNumbersLessThan500; // в конце возвращаем массив
-}
-    
-console.log(fullRandom(0,1000,500));
-// firts try : [ 193, 478 ]
-// second try : [ 197 ]
-// third try :  []
-
-
-// const field = [["","",""],["","",""],["","",""]];
-// let fillFieldInterval;
-// let intervalLogField;
-
-// function fillField(){
-//     let isFilled = true;
-//     for(let i = 0; i < 3; i++){
-//         for(let j = 0; j < 3; j++){
-//             isFilled = true;
-//             if(field[i][j] === ''){
-//                 field[i][j] = Math.random() < 0.5 ? 'X' : 'O';
-//                 isFilled = false;
-//                 return;
-//             }else{
-//                 isFilled = true;
-//             }
+// function fullRandom(min, max, minNumberForEnd){
+//     min = Math.ceil(min);
+//     max = Math.floor(max);
+//     while (randomNumber < minNumberForEnd || randomNumber == undefined){ // пока случайное число меньше 500
+//         randomNumber = Math.round(min + Math.random() * (max + 1 - min)) + min;
+//         if(randomNumber < minNumberForEnd){
+//             arrayNumbersLessThan500.push(randomNumber); // если рандомное число меньше 500, то добавляем его в массив
 //         }
 //     }
-//     if(isFilled === true) {
-//         clearInterval(fillFieldInterval); // Останавливаем функцию fillField
-//         clearInterval(intervalLogField); // Останавливаем функцию logField(т.е. не выводим в консоль)
-//         console.log('field filled');
 // }
-
-
-// }
-
-// function logField() {
-//     console.log(field);
-// }
-// fillFieldInterval = setInterval(fillField, 1000); // Запускаем функцию fillField каждую секунду
-// intervalLogField = setInterval(logField, 1000);
+function randomSymbolCell(chanse, symbolTrue, symbolFalse){
+    return Math.random() < chanse ? symbolTrue : symbolFalse;
+}
+function randomGenerating(number){
+    return Math.floor(Math.random() * number);
+}
 
 const field = [["","",""],["","",""],["","",""]];
 function fillField(){
@@ -109,7 +75,8 @@ function fillField(){
         }
     }
     if(emptyCells.length > 0){
-        let randomIndex = Math.floor(Math.random() * emptyCells.length);
+        // let randomIndex = Math.floor(Math.random() * emptyCells.length);
+        let randomIndex = randomGenerating(emptyCells.length);
         return emptyCells[randomIndex];
     }
     return null;
@@ -117,7 +84,8 @@ function fillField(){
 const intervalId = setInterval(function(){
     let randomCell = fillField();
     if(randomCell !== null){
-        let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
+        // let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
+        let randomSymbol = randomSymbolCell(0.5, 'X', 'O');
         field[randomCell.x][randomCell.y] = randomSymbol;
         console.log(field);
     }else{
