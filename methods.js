@@ -65,38 +65,66 @@ console.log(fullRandom(0,1000,500));
 // third try :  []
 
 
-const field = [["","",""],["","",""],["","",""]];
-let fillFieldInterval;
-let intervalLogField;
+// const field = [["","",""],["","",""],["","",""]];
+// let fillFieldInterval;
+// let intervalLogField;
 
+// function fillField(){
+//     let isFilled = true;
+//     for(let i = 0; i < 3; i++){
+//         for(let j = 0; j < 3; j++){
+//             isFilled = true;
+//             if(field[i][j] === ''){
+//                 field[i][j] = Math.random() < 0.5 ? 'X' : 'O';
+//                 isFilled = false;
+//                 return;
+//             }else{
+//                 isFilled = true;
+//             }
+//         }
+//     }
+//     if(isFilled === true) {
+//         clearInterval(fillFieldInterval); // Останавливаем функцию fillField
+//         clearInterval(intervalLogField); // Останавливаем функцию logField(т.е. не выводим в консоль)
+//         console.log('field filled');
+// }
+
+
+// }
+
+// function logField() {
+//     console.log(field);
+// }
+// fillFieldInterval = setInterval(fillField, 1000); // Запускаем функцию fillField каждую секунду
+// intervalLogField = setInterval(logField, 1000);
+
+const field = [["","",""],["","",""],["","",""]];
 function fillField(){
-    let isFilled = true;
-    for(let i = 0; i < 3; i++){
-        for(let j = 0; j < 3; j++){
-            isFilled = true;
+    let emptyCells = [];
+    for(let i = 0; i < field.length; i++){
+        for(let j = 0; j < field[i].length; j++){
             if(field[i][j] === ''){
-                field[i][j] = Math.random() < 0.5 ? 'X' : 'O';
-                isFilled = false;
-                return;
-            }else{
-                isFilled = true;
+                emptyCells.push({x: i, y: j});
             }
         }
     }
-    if(isFilled === true) {
-        clearInterval(fillFieldInterval); // Останавливаем функцию fillField
-        clearInterval(intervalLogField); // Останавливаем функцию logField(т.е. не выводим в консоль)
-        console.log('field filled');
+    if(emptyCells.length > 0){
+        let randomIndex = Math.floor(Math.random() * emptyCells.length);
+        return emptyCells[randomIndex];
+    }
+    return null;
 }
-
-
-}
-
-function logField() {
-    console.log(field);
-}
-fillFieldInterval = setInterval(fillField, 1000); // Запускаем функцию fillField каждую секунду
-intervalLogField = setInterval(logField, 1000);
-
+const intervalId = setInterval(function(){
+    let randomCell = fillField();
+    if(randomCell !== null){
+        let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
+        field[randomCell.x][randomCell.y] = randomSymbol;
+        console.log(field);
+    }else{
+        clearInterval(intervalId);
+        console.log('no empty cells');
+    }
+    
+},1000)
 
 
