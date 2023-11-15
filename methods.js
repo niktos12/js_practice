@@ -57,11 +57,8 @@ let arrayNumbersLessThan500 = [];
 //         }
 //     }
 // }
-function randomSymbolCell(chanse, symbolTrue, symbolFalse){
-    return Math.random() < chanse ? symbolTrue : symbolFalse;
-}
-function randomGenerating(number){
-    return Math.floor(Math.random() * number);
+function random(min,max){
+    return Math.floor(min + Math.random() * (max + 1 - min))
 }
 
 const field = [["","",""],["","",""],["","",""]];
@@ -76,7 +73,7 @@ function fillField(){
     }
     if(emptyCells.length > 0){
         // let randomIndex = Math.floor(Math.random() * emptyCells.length);
-        let randomIndex = randomGenerating(emptyCells.length);
+        let randomIndex = random(1,emptyCells.length) - 1;
         return emptyCells[randomIndex];
     }
     return null;
@@ -85,7 +82,7 @@ const intervalId = setInterval(function(){
     let randomCell = fillField();
     if(randomCell !== null){
         // let randomSymbol = Math.random() < 0.5 ? 'X' : 'O';
-        let randomSymbol = randomSymbolCell(0.5, 'X', 'O');
+        let randomSymbol = random(0,1) == 0 ? 'X' : 'O';
         field[randomCell.x][randomCell.y] = randomSymbol;
         console.log(field);
     }else{
@@ -95,4 +92,38 @@ const intervalId = setInterval(function(){
     
 },1000)
 
+
+
+// function getRandomInt(min:number,max:number) { 
+//     return Math.floor(min + Math.random() * (max + 1 - min)); 
+// } 
+ 
+// const fields = [ 
+//     ["","",""], 
+//     ["","",""], 
+//     ["","",""] 
+// ] 
+// function fillRandomCell() { 
+//     const getRandomIndex1= getRandomInt(1,fields.length)-1; 
+//     const getRandomIndex2= getRandomInt(1,fields[0].length)-1; 
+//     let field = fields[getRandomIndex1][getRandomIndex2]; 
+//     if(field=="") { 
+//         const char = getRandomInt(0,1) == 0 ? "X" : "O"; 
+//         fields[getRandomIndex1][getRandomIndex2] = char; 
+//         console.log(fields); 
+//     } else { 
+//         let fillFields = 0; 
+//         for(let i = 0; i<fields.length; i++) { 
+//             for(let j = 0;j<fields[i].length; j++) { 
+//                 if(fields[i][j]!="") fillFields++; 
+//             } 
+//         } 
+//         if(fillFields==9) { 
+//             console.log("Все поля заполнены!") 
+//             return; 
+//         } 
+//     } 
+//     setTimeout(()=>{fillRandomCell()},1000) 
+// } 
+// fillRandomCell();
 
