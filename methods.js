@@ -153,8 +153,43 @@ console.log((1000000000*3) + 6)
 //     return result;
 // }
 //   console.log(fizzbuzz(15))
-function descendingOrder(n){
-    return parseInt(String(n).split('').sort((a,b) => b - a).join(''));
-  }
-  console.log(descendingOrder(42145))
+// function descendingOrder(n){
+//     return parseInt(String(n).split('').sort((a,b) => b - a).join(''));
+//   }
+//   console.log(descendingOrder(42145))
+//   const obj = { 
+//     name:"oleg", 
+//     age:"mya",
+//     }
+// obj.repeat = obj;
+// console.log(obj['repeat'])
+function detectOperator(a){
+    var op="no info";
+    let stringNumber = String(a);
+    stringNumber.includes('039') ? op = 'Golden Telecom' : op = 'no info';
+    stringNumber.includes('050') || stringNumber.includes('066')  || stringNumber.includes('095') || stringNumber.includes('099') ? op = 'MTS' : op = 'no info';
+    stringNumber.includes('063') || stringNumber.includes('093') ? op = "Life:)" : op = 'no info';
+    stringNumber.includes('067') || stringNumber.includes('096') || stringNumber.includes('097') || stringNumber.includes('098') ? op = 'Kyivstar' : op = 'no info';
+    stringNumber.length > 12 ? op = 'no info' : op = 'no info';
+    return op;
+    }
 
+
+
+    // function detectOperator(a){
+    //     var op="no info";
+    //     let stringNumber = String(a);
+    //       if(stringNumber.includes('039')){
+    //         return 'Golden Telecom' ;
+    //       }else if(stringNumber.includes('050') || stringNumber.includes('066')  || stringNumber.includes('095') || stringNumber.includes('099')){
+    //         return 'MTS';
+    //       }else if(stringNumber.includes('063') || stringNumber.includes('093')){
+    //         return "Life:)";
+    //       }else if(stringNumber.includes('067') || stringNumber.includes('096') || stringNumber.includes('097') || stringNumber.includes('098')){
+    //         return 'Kyivstar';
+    //       }else if(stringNumber.length > 12){
+    //         return op;
+    //       }
+        
+    //     }
+    
