@@ -192,28 +192,32 @@ function detectOperator(a){
     //       }
         
     //     }
-    function detectOperator(a) {
-        const operators = {
-            '039': 'Golden Telecom',
-            '050': 'MTS',
-            '066': 'MTS',
-            '095': 'MTS',
-            '099': 'MTS',
-            '063': 'Life:)',
-            '093': 'Life:)',
-            '067': 'Kyivstar',
-            '096': 'Kyivstar',
-            '097': 'Kyivstar',
-            '098': 'Kyivstar'
-        };
+//     function detectOperator(a) {
+//         const operators = {
+//             '039': 'Golden Telecom',
+//             '050': 'MTS',
+//             '066': 'MTS',
+//             '095': 'MTS',
+//             '099': 'MTS',
+//             '063': 'Life:)',
+//             '093': 'Life:)',
+//             '067': 'Kyivstar',
+//             '096': 'Kyivstar',
+//             '097': 'Kyivstar',
+//             '098': 'Kyivstar'
+//         };
     
-        const stringNumber = String(a);
+//         const stringNumber = String(a);
     
-        for (let operator in operators) {
-            if (stringNumber.startsWith(operator,1)) {
-                return operators[operator];
-            }
-        }
-      return stringNumber.length > 12 ? 'no info' : 'no info';
-    }
-console.log(detectOperator(80931551119));    
+//         for (let operator in operators) {
+//             if (stringNumber.startsWith(operator,1)) {
+//                 return operators[operator];
+//             }
+//         }
+//       return stringNumber.length > 12 ? 'no info' : 'no info';
+//     }
+// console.log(detectOperator(80931551119));    
+function isDigit(s){
+    return s.trimStart() == +s ? true : false
+  }
+  console.log(isDigit('s2432'))
