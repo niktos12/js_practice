@@ -217,7 +217,15 @@ function detectOperator(a){
 //       return stringNumber.length > 12 ? 'no info' : 'no info';
 //     }
 // console.log(detectOperator(80931551119));    
-function isDigit(s){
-    return s.trimStart() == +s ? true : false
-  }
-  console.log(isDigit('s2432'))
+// function isDigit(s){
+//     return s.trimStart() == +s ? true : false
+//   }
+//   console.log(isDigit('s2432'))
+function divideArray(arr, size) {
+    let subarray = [];
+    for (let i = 0; i < arr.length; i += size) {
+        subarray.push(arr.slice(i, i + size));
+    }
+    return subarray;
+}
+console.log(divideArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
